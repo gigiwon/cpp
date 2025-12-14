@@ -1,45 +1,57 @@
 #include <stdio.h>
 
 
-// # Àº ÀüÃ³¸® ±â´ÉÀÎµ¥, ÀÌ°Ç ¹«Á¶°Ç ¸ÕÀú ½ÇÇà
-// #define Àº Ä¡È¯ -> ¸ÅÅ©·Î Á¤ÀÇ
-// #define ÀåÁ¡
-// 1. °¡µ¶¼º
-// 2. À¯Áöº¸¼ö¼º Çâ»ó (ÀüÃ¼ ¼öÁ¤ÇÒ ÇÊ¿ä ¾øÀ½)
+// # ì€ ì „ì²˜ë¦¬ ê¸°ëŠ¥ì¸ë°, ì´ê±´ ë¬´ì¡°ê±´ ë¨¼ì € ì‹¤í–‰
+// #define ì€ ì¹˜í™˜ -> ë§¤í¬ë¡œ ì •ì˜
+// #define ìž¥ì 
+// 1. ê°€ë…ì„±
+// 2. ìœ ì§€ë³´ìˆ˜ì„± í–¥ìƒ (ì „ì²´ ìˆ˜ì •í•  í•„ìš” ì—†ìŒ)
 
-#define HUNGRY   0x001 // Ã¹¹øÂ° »óÅÂ, 16Áø¼ö Ç¥±â¹ý
-#define THIRSTY  0x002 // µÎ¹øÂ° »óÅÂ
-#define TIRED    0x004 // ¼¼¹øÂ° »óÅÂ
-#define FIRE     0x008 // ³×¹øÂ° »óÅÂ
+#define HUNGRY   0x001 // ì²«ë²ˆì§¸ ìƒíƒœ, 16ì§„ìˆ˜ í‘œê¸°ë²•
+#define THIRSTY  0x002 // ë‘ë²ˆì§¸ ìƒíƒœ
+#define TIRED    0x004 // ì„¸ë²ˆì§¸ ìƒíƒœ
+#define FIRE     0x008 // ë„¤ë²ˆì§¸ ìƒíƒœ
 
-#define COLD     0x010 // ´Ù¼¸¹øÂ° »óÅÂ
-#define POISON1  0x020 // ¿©¼¸¹øÂ° »óÅÂ
-#define POISON2  0x040 
-#define POISON3  0x080 
-
-#define POISON4  0x100 
-#define POISON5  0x200 
+#define COLD     0x010 // ë‹¤ì„¯ë²ˆì§¸ ìƒíƒœ
+#define POISON   0x020 // ì—¬ì„¯ë²ˆì§¸ ìƒíƒœ
 
 
-// ÁÖ¼®
-// ¼³¸í, ÄÚµå·Î ÀÎ½ÄµÇÁö ¾Ê´Â´Ù
+
+// ì£¼ì„
+// ì„¤ëª…, ì½”ë“œë¡œ ì¸ì‹ë˜ì§€ ì•ŠëŠ”ë‹¤
 
 
-// Àü¿ªº¯¼ö
+
+// ì „ì—­ë³€ìˆ˜
 int global = 0;
 
-int Add(int left, int right) // left, right ´Â Áö¿ªº¯¼ö
+int Add(int left, int right) // left, right ëŠ” ì§€ì—­ë³€ìˆ˜
 {
 	return left + right;
 }
 
 
-// ÇÔ¼ö
+
+int Factorial(int _iNum)
+{
+	int iValue = 1;
+
+	for (int j = 0; j < _iNum - 1; ++j)
+	{
+		iValue *= (j + 2);
+	}
+
+	return iValue;
+}
+
+
+
+// í•¨ìˆ˜
 int main()
 {
-	// ÀÚ·áÇü: Á¤¼öÇü, ½Ç¼öÇü (Å©±â ´ÜÀ§, byte) 
-	// Á¤¼öÇü: char(1), short(2), int(4), long(4), long long(8)
-	// ½Ç¼öÇü: float(4), double(8)
+	// ìžë£Œí˜•: ì •ìˆ˜í˜•, ì‹¤ìˆ˜í˜• (í¬ê¸° ë‹¨ìœ„, byte) 
+	// ì •ìˆ˜í˜•: char(1), short(2), int(4), long(4), long long(8)
+	// ì‹¤ìˆ˜í˜•: float(4), double(8)
 	int i = 0;
 
 	// 256 -> 0 ~ 255
@@ -48,52 +60,53 @@ int main()
 	// c = 255;
 	c = -1;
 
-	// 1¹ÙÀÌÆ®·Î ¾ç¼ö,À½¼ö µÑ ´Ù Ç¥Çö
+	// 1ë°”ì´íŠ¸ë¡œ ì–‘ìˆ˜,ìŒìˆ˜ ë‘˜ ë‹¤ í‘œí˜„
 	// -128 ~ 0 ~ 127
 	char c1 = 0;
 	c1 = 0;
 
-	// À½ÀÇ Á¤¼ö Ã£±â (2ÀÇ º¸¼ö)
-	// ´ëÀÀµÇ´Â ¾ç¼öÀÇ ºÎÈ£¸¦ ¹ÝÀü ÈÄ, 1À» ´õÇÔ>>>
+	// ìŒì˜ ì •ìˆ˜ ì°¾ê¸° (2ì˜ ë³´ìˆ˜)
+	// ëŒ€ì‘ë˜ëŠ” ì–‘ìˆ˜ì˜ ë¶€í˜¸ë¥¼ ë°˜ì „ í›„, 1ì„ ë”í•¨>>>
 
 	int a = 4 + 4.0;
 
-	// Á¤¼öÇ¥Çö°ú ½Ç¼öÇ¥Çö ¹æ½ÄÀº ´Ù¸£´Ù
-	// ½Ç¼ö Ç¥Çö ¹æ½ÄÀº Á¤¹Ðµµ¿¡ ÀÇÁ¸
-	// µû¶ó¼­ doubleÀÚ·á ÇüÀÌ floatº¸´Ù ´õ ¾Æ·¡ÀÇ ¼Ò¼öÁ¡±îÁö Á¤È®ÇÏ°Ô Ç¥Çö °¡´É
+	// ì •ìˆ˜í‘œí˜„ê³¼ ì‹¤ìˆ˜í‘œí˜„ ë°©ì‹ì€ ë‹¤ë¥´ë‹¤
+	// ì‹¤ìˆ˜ í‘œí˜„ ë°©ì‹ì€ ì •ë°€ë„ì— ì˜ì¡´
+	// ë”°ë¼ì„œ doubleìžë£Œ í˜•ì´ floatë³´ë‹¤ ë” ì•„ëž˜ì˜ ì†Œìˆ˜ì ê¹Œì§€ ì •í™•í•˜ê²Œ í‘œí˜„ ê°€ëŠ¥
 
-	// Á¤¼ö´Â Á¤¼ö, ½Ç¼ö´Â ½Ç¼ö³¢¸® ¿¬»êÇÏµÇ, µÎ Ç¥Çö¹æ½ÄÀÇ ÇÇ ¿¬»êÀÚ°¡ ¿¬»êµÉ °æ¿ì ¸í½ÃÀûÀ¸·Î º¯È¯ÇÏÀÚ
-	// ¾Æ·¡ float(20)À» 20ÀÌ¶ó°í ÇØµµ °è»êÀº µÇÁö¸¸ Á¤È®ÇÏ°Ô float()À» ÀÛ¼ºÇØÁÖÀÚ
+	// ì •ìˆ˜ëŠ” ì •ìˆ˜, ì‹¤ìˆ˜ëŠ” ì‹¤ìˆ˜ë¼ë¦¬ ì—°ì‚°í•˜ë˜, ë‘ í‘œí˜„ë°©ì‹ì˜ í”¼ ì—°ì‚°ìžê°€ ì—°ì‚°ë  ê²½ìš° ëª…ì‹œì ìœ¼ë¡œ ë³€í™˜í•˜ìž
+	// ì•„ëž˜ float(20)ì„ 20ì´ë¼ê³  í•´ë„ ê³„ì‚°ì€ ë˜ì§€ë§Œ ì •í™•í•˜ê²Œ float()ì„ ìž‘ì„±í•´ì£¼ìž
 	float f = 10.2415f + (float)20;
 
-	// ½Ç¼ö¸¦ »ó¼ö·Î ÀûÀ» °æ¿ì ¼Ò¼öÁ¡ µÚ¿¡ f¸¦ ºÙÀÌ¸é float ÀÚ·áÇüÀ¸·Î, f¸¦ ºÙÀÌÁö ¾ÊÀ¸¸é double ÀÚ·áÇüÀ¸·Î ÀÎ½Ä
+	// ì‹¤ìˆ˜ë¥¼ ìƒìˆ˜ë¡œ ì ì„ ê²½ìš° ì†Œìˆ˜ì  ë’¤ì— fë¥¼ ë¶™ì´ë©´ float ìžë£Œí˜•ìœ¼ë¡œ, fë¥¼ ë¶™ì´ì§€ ì•Šìœ¼ë©´ double ìžë£Œí˜•ìœ¼ë¡œ ì¸ì‹
 
 
-	// ¿¬»êÀÚ
-	// ´ëÀÔ ¿¬»êÀÚ, =
+
+	// ì—°ì‚°ìž
+	// ëŒ€ìž… ì—°ì‚°ìž, =
 	
-	// »ê¼ú ¿¬»êÀÚ
-	// +,-, *, /, %(¸ðµâ·¯½º, ³ª¸ÓÁö ¿¬»êÀÚ)
-	// ++,-- (Áõ°¨ ¿¬»êÀÚ)
-	// 1ÀÇ Áõ°¨ÀÌ ¾Æ´Ñ ´ÙÀ½ ´Ü°èÀÇ Áõ°¨À¸·Î º¸´Â °Ô ´õ ÀûÀý
+	// ì‚°ìˆ  ì—°ì‚°ìž
+	// +,-, *, /, %(ëª¨ë“ˆëŸ¬ìŠ¤, ë‚˜ë¨¸ì§€ ì—°ì‚°ìž)
+	// ++,-- (ì¦ê° ì—°ì‚°ìž)
+	// 1ì˜ ì¦ê°ì´ ì•„ë‹Œ ë‹¤ìŒ ë‹¨ê³„ì˜ ì¦ê°ìœ¼ë¡œ ë³´ëŠ” ê²Œ ë” ì ì ˆ
 
-	int data = 10 + 10; // ´ëÀÔ ¿¬»êÀÚº¸´Ù »ê¼ú ¿¬»çÀÚ°¡ ¿ì¼±
+	int data = 10 + 10; // ëŒ€ìž… ì—°ì‚°ìžë³´ë‹¤ ì‚°ìˆ  ì—°ì‚¬ìžê°€ ìš°ì„ 
 
-	// º¹ÇÕ ´ëÀÔ ¿¬»êÀÚ
+	// ë³µí•© ëŒ€ìž… ì—°ì‚°ìž
 	// data = data + 20;
 	data += 20;
 	
 	data = 10 / 3; // 3.33333 -> 3
 	data = 10 % 3; // 1
 
-	// data = 10.0 % 3.0; (½Ç¼ö´Â %¿¬»êÀÚ »ç¿ë ºÒ°¡)
+	// data = 10.0 % 3.0; (ì‹¤ìˆ˜ëŠ” %ì—°ì‚°ìž ì‚¬ìš© ë¶ˆê°€)
 	
 	data = 10. / 3.; // 3.33333
 	data = (int)(10.0 / 3.0); // 3
 
 	data = 0;
-	++data; // ÀüÀ§(ÀüÄ¡
-	data++; // ÈÄÀ§(ÈÄÄ¡), ¿¬»êÀÚ ¿ì¼±¼øÀ§°¡ °¡Àå ³ªÁßÀ¸·Î Ã³¸®µÊ
+	++data; // ì „ìœ„(ì „ì¹˜
+	data++; // í›„ìœ„(í›„ì¹˜), ì—°ì‚°ìž ìš°ì„ ìˆœìœ„ê°€ ê°€ìž¥ ë‚˜ì¤‘ìœ¼ë¡œ ì²˜ë¦¬ë¨
 	
 	data = 0;
 
@@ -103,17 +116,17 @@ int main()
 
 	data++; // data = data + 1;
 	data--; // data = data - 1;
-	// data++, ++data ÀÇ °æ¿ì Æ¯º°ÇÑ »çÀ¯°¡ ¾øÀ¸¸é ÀüÀ§·Î ¾²ÀÚ
+	// data++, ++data ì˜ ê²½ìš° íŠ¹ë³„í•œ ì‚¬ìœ ê°€ ì—†ìœ¼ë©´ ì „ìœ„ë¡œ ì“°ìž
 
-	// ³í¸® ¿¬»êÀÚ
+	// ë…¼ë¦¬ ì—°ì‚°ìž
 	// ! (invert), && (and), || (or)
-	// Âü(true), °ÅÁþ(false)
-	// 0ÀÌ ¾Æ´Ñ ¼ö´Â Âü, ÂüÀÏ °æ¿ì 1À» ¹ÝÈ¯
-	// °ÅÁþÀº 0, °ÅÁþÀÏ °æ¿ì 0À» ¹ÝÈ¯
+	// ì°¸(true), ê±°ì§“(false)
+	// 0ì´ ì•„ë‹Œ ìˆ˜ëŠ” ì°¸, ì°¸ì¼ ê²½ìš° 1ì„ ë°˜í™˜
+	// ê±°ì§“ì€ 0, ê±°ì§“ì¼ ê²½ìš° 0ì„ ë°˜í™˜
 	int trueflase = true; // 1
 	bool trueflase2 = false; // 0
 
-	bool Istrue = 100; // 1·Î Æò°¡, true/false¸¸ ³ªÅ¸³»±â ¶§¹®
+	bool Istrue = 100; // 1ë¡œ í‰ê°€, true/falseë§Œ ë‚˜íƒ€ë‚´ê¸° ë•Œë¬¸
 	
 	Istrue = true;
 	Istrue = !Istrue; // false
@@ -126,12 +139,13 @@ int main()
 	iTrue = 0 && 200; // 0
 	iTrue = 0 || 200; // 1
 
-	// ºñ±³ ¿¬»êÀÚ
+	// ë¹„êµ ì—°ì‚°ìž
 	// ==, !=, >, <, >=, <=
-	// Âü, °ÅÁþ
+	// ì°¸, ê±°ì§“
 
 
-	// if, else ±¸¹®
+
+	// if, else êµ¬ë¬¸
 
 	data = 0;
 	if (0 && 200)
@@ -139,15 +153,15 @@ int main()
 		data = 100;
 	}
 
-	if (data == 100) // À§¿¡¼­ data = 0ÀÌ¹Ç·Î false
+	if (data == 100) // ìœ„ì—ì„œ data = 0ì´ë¯€ë¡œ false
 	{
 		data = 200;
 	}
-	else if (data == 250)// else if ¹®Àº ¿©·¯ °³ »ç¿ë °¡´É, if °¡ ¾È µÉ °æ¿ì ½ÇÇà
+	else if (data == 250)// else if ë¬¸ì€ ì—¬ëŸ¬ ê°œ ì‚¬ìš© ê°€ëŠ¥, if ê°€ ì•ˆ ë  ê²½ìš° ì‹¤í–‰
 	{
 		data = 300;
 	}
-	else // if°¡ falseÀÏ ¶§ ½ÇÇà, ¾ø¾îµµ ¹«¹æ
+	else // ifê°€ falseì¼ ë•Œ ì‹¤í–‰, ì—†ì–´ë„ ë¬´ë°©
 	{
 		data = 400;
 	}
@@ -180,7 +194,7 @@ int main()
 
 	}
 	
-	// ¾Æ·¡ 2°³´Â µ¿ÀÏ
+	// ì•„ëž˜ 2ê°œëŠ” ë™ì¼
 	iTest = 20;
 
 	switch (iTest)
@@ -200,10 +214,11 @@ int main()
 	}
 
 
-	// »ïÇ× ¿¬»êÀÚ
-	// °¡µ¶¼ºÀÌ ¶³¾îÁ®¼­ ±»ÀÌ »ç¿ëÇÏÁö´Â ¾ÊÀ½
+
+	// ì‚¼í•­ ì—°ì‚°ìž
+	// ê°€ë…ì„±ì´ ë–¨ì–´ì ¸ì„œ êµ³ì´ ì‚¬ìš©í•˜ì§€ëŠ” ì•ŠìŒ
 	// :?
-	// ¾Æ·¡ 2°³´Â µ¿ÀÏ
+	// ì•„ëž˜ 2ê°œëŠ” ë™ì¼
 	iTest == 20 ? iTest = 100 : iTest = 200;
 
 	if (iTest == 20)
@@ -216,64 +231,67 @@ int main()
 	}
 
 
-	// ºñÆ® ¿¬»êÀÚ
-	// ½¬ÇÁÆ® <<, >>
+
+	// ë¹„íŠ¸ ì—°ì‚°ìž
+	// ì‰¬í”„íŠ¸ <<, >>
 	unsigned char byte = 1; // 0000 0001
 	//byte << 1; // 0000 0010
 	byte = byte << 1; // byte <<= 1;
-	byte <<= 2; // 0000 1000, 4¹è Áõ°¡, 2^n
-	byte >>= 1; // 0000 0100, 2¹è °¨¼Ò, 2^-n ÀÇ ¸ò, °¨¼Ò¿¡´Â ³ª¸ÓÁö °³³äÀÌ ¾øÀ½
+	byte <<= 2; // 0000 1000, 4ë°° ì¦ê°€, 2^n
+	byte >>= 1; // 0000 0100, 2ë°° ê°ì†Œ, 2^-n ì˜ ëª«, ê°ì†Œì—ëŠ” ë‚˜ë¨¸ì§€ ê°œë…ì´ ì—†ìŒ
 	
-	// ºñÆ® °ö(&), ÇÕ(|), xor(^) ¹ÝÀü(~)
-	// ºñÆ®´ÜÀ§·Î ¿¬»ê ÁøÇà
-	// & µÑ ´Ù 1ÀÎ °æ¿ì, 1
-	// | µÑ Áß ÇÏ³ª¶óµµ 1ÀÎ °æ¿ì, 1
-	// ^ °°À¸¸é 0, ´Ù¸£¸é 1
-	// ~ 1Àº 0À¸·Î, 0Àº 1·Î
+	// ë¹„íŠ¸ ê³±(&), í•©(|), xor(^) ë°˜ì „(~)
+	// ë¹„íŠ¸ë‹¨ìœ„ë¡œ ì—°ì‚° ì§„í–‰
+	// & ë‘˜ ë‹¤ 1ì¸ ê²½ìš°, 1
+	// | ë‘˜ ì¤‘ í•˜ë‚˜ë¼ë„ 1ì¸ ê²½ìš°, 1
+	// ^ ê°™ìœ¼ë©´ 0, ë‹¤ë¥´ë©´ 1
+	// ~ 1ì€ 0ìœ¼ë¡œ, 0ì€ 1ë¡œ
 
-	unsigned int iStatus = 0; // iStatus´Â 32bit(4byte), 32°³ÀÇ »óÅÂ¸¦ Ç¥Çö
+	unsigned int iStatus = 0; // iStatusëŠ” 32bit(4byte), 32ê°œì˜ ìƒíƒœë¥¼ í‘œí˜„
 	
-	// »óÅÂ Ãß°¡
-	iStatus |= HUNGRY; // ´Ù¸¥ ÀÚ¸®´Â ±×´ë·Î ÀÌ¾îÁö°í, HUNGRY ÀÚ¸®´Â ÇÕÄ¡´Â °ªÀÌ ¹«¾ùÀÌµç 1ÀÌ À¯Áö
-	iStatus |= THIRSTY; // iStatus = iStatus | THIRSTY; ¸¶Âù°¡Áö·Î THIRSTY ÀÚ¸®¸¸ 1ÀÌ À¯Áö
+	// ìƒíƒœ ì¶”ê°€
+	iStatus |= HUNGRY; // ë‹¤ë¥¸ ìžë¦¬ëŠ” ê·¸ëŒ€ë¡œ ì´ì–´ì§€ê³ , HUNGRY ìžë¦¬ëŠ” í•©ì¹˜ëŠ” ê°’ì´ ë¬´ì—‡ì´ë“  1ì´ ìœ ì§€
+	iStatus |= THIRSTY; // iStatus = iStatus | THIRSTY; ë§ˆì°¬ê°€ì§€ë¡œ THIRSTY ìžë¦¬ë§Œ 1ì´ ìœ ì§€
 
-	// »óÅÂ È®ÀÎ
-	if(iStatus & THIRSTY) // iStatusÀÇ THIRSTY ÀÚ¸®¸¸ °Ë»ç, 1ÀÌ¸é Âü, 0ÀÌ¸é °ÅÁþ
+	// ìƒíƒœ í™•ì¸
+	if(iStatus & THIRSTY) // iStatusì˜ THIRSTY ìžë¦¬ë§Œ ê²€ì‚¬, 1ì´ë©´ ì°¸, 0ì´ë©´ ê±°ì§“
 	{
-		// ¹è°íÇÂ »óÅÂÀÏ °æ¿ì, ½ÇÇà
+		// ë°°ê³ í”ˆ ìƒíƒœì¼ ê²½ìš°, ì‹¤í–‰
 	}
 
-	// Æ¯Á¤ÀÚ¸® ºñÆ® Á¦°Å
-	iStatus &= ~THIRSTY; // THIRSTY ÀÚ¸®¸¸ 0À¸·Î º¯°æ, ³ª¸ÓÁö ÀÚ¸®´Â ±×´ë·Î
+	// íŠ¹ì •ìžë¦¬ ë¹„íŠ¸ ì œê±°
+	iStatus &= ~THIRSTY; // THIRSTY ìžë¦¬ë§Œ 0ìœ¼ë¡œ ë³€ê²½, ë‚˜ë¨¸ì§€ ìžë¦¬ëŠ” ê·¸ëŒ€ë¡œ
 
 
-	// º¯¼ö
-	// 1. Áö¿ªº¯¼ö (local variable), ÇÔ¼ö ³»¿¡¼­ ¼±¾ðµÈ º¯¼ö
-	// 2. Àü¿ªº¯¼ö (global variable), ÇÔ¼ö ¿ÜºÎ¿¡¼­ ¼±¾ðµÈ º¯¼ö
-	// 3. Á¤Àûº¯¼ö (static variable), ÇÔ¼ö ³»¿¡¼­ ¼±¾ðµÇÁö¸¸, ÇÔ¼ö°¡ Á¾·áµÇ¾îµµ ¸Þ¸ð¸®¿¡¼­ »ç¶óÁöÁö ¾Ê´Â º¯¼ö
-	// 4. ¿ÜºÎº¯¼ö (extern variable), ´Ù¸¥ ÆÄÀÏ¿¡ ¼±¾ðµÈ Àü¿ªº¯¼ö
 
-	// Áö¿ªº¯¼ö
+	// ë³€ìˆ˜
+	// 1. ì§€ì—­ë³€ìˆ˜ (local variable), í•¨ìˆ˜ ë‚´ì—ì„œ ì„ ì–¸ëœ ë³€ìˆ˜
+	// 2. ì „ì—­ë³€ìˆ˜ (global variable), í•¨ìˆ˜ ì™¸ë¶€ì—ì„œ ì„ ì–¸ëœ ë³€ìˆ˜
+	// 3. ì •ì ë³€ìˆ˜ (static variable), í•¨ìˆ˜ ë‚´ì—ì„œ ì„ ì–¸ë˜ì§€ë§Œ, í•¨ìˆ˜ê°€ ì¢…ë£Œë˜ì–´ë„ ë©”ëª¨ë¦¬ì—ì„œ ì‚¬ë¼ì§€ì§€ ì•ŠëŠ” ë³€ìˆ˜
+	// 4. ì™¸ë¶€ë³€ìˆ˜ (extern variable), ë‹¤ë¥¸ íŒŒì¼ì— ì„ ì–¸ëœ ì „ì—­ë³€ìˆ˜
+
+	// ì§€ì—­ë³€ìˆ˜
 	int iName = 0;
 
-	// °ýÈ£ ¾È¿¡ ¼±¾ðµÈ º¯¼ö(ÇÔ¼ö, Áö¿ª)
+	// ê´„í˜¸ ì•ˆì— ì„ ì–¸ëœ ë³€ìˆ˜(í•¨ìˆ˜, ì§€ì—­)
 	{
-		// º¯¼ö¸í ±ÔÄ¢
+		// ë³€ìˆ˜ëª… ê·œì¹™
 		int iName = 100;
 		{
 			{
 
 			}
 		}
-		iName; // ÇÔ¼ö ¾È iName È£Ãâ
+		iName; // í•¨ìˆ˜ ì•ˆ iName í˜¸ì¶œ
 
 	}
 
-	iName; // ÇÔ¼ö ¹Û iName È£Ãâ
+	iName; // í•¨ìˆ˜ ë°– iName í˜¸ì¶œ
 
 
-	// ÇÔ¼ö (function), ±â´É
-	// ±â´ÉÀÇ ¸ðµâÈ­: ÀÛÀº ÇÔ¼öµéÀÌ ´õ Å« ÇÔ¼ö, ´õ Å« ÇÔ¼öµéÀÌ ¸ð¿©¼­ ´õ Å« ÇÔ¼ö¸¦ ½×¾Æ¿Ã¸®´Â °Í
+
+	// í•¨ìˆ˜ (function), ê¸°ëŠ¥
+	// ê¸°ëŠ¥ì˜ ëª¨ë“ˆí™”: ìž‘ì€ í•¨ìˆ˜ë“¤ì´ ë” í° í•¨ìˆ˜, ë” í° í•¨ìˆ˜ë“¤ì´ ëª¨ì—¬ì„œ ë” í° í•¨ìˆ˜ë¥¼ ìŒ“ì•„ì˜¬ë¦¬ëŠ” ê²ƒ
 	data = 10 + 20;
 	data = Add(10, 20);
 
@@ -282,34 +300,35 @@ int main()
 	int iData = Add(100, 200);
 
 
-	// ¹Ýº¹¹®, Á¶°ÇÀ» ÁÖ°í Á¶°ÇÀÌ ³¡³¯ ¶§±îÁö ¹Ýº¹
-	//for (/*¹Ýº¹ÀÚ ÃÊ±âÈ­*/; /*¹Ýº¹ÀÚ Á¶°Ç Ã¼Å©, true/false°¡ ³ª¿Í¾ß µÊ*/; /*¹Ýº¹ÀÚ º¯°æ*/)
+
+	// ë°˜ë³µë¬¸, ì¡°ê±´ì„ ì£¼ê³  ì¡°ê±´ì´ ëë‚  ë•Œê¹Œì§€ ë°˜ë³µ
+	//for (/*ë°˜ë³µìž ì´ˆê¸°í™”*/; /*ë°˜ë³µìž ì¡°ê±´ ì²´í¬, true/falseê°€ ë‚˜ì™€ì•¼ ë¨*/; /*ë°˜ë³µìž ë³€ê²½*/)
 	//{
-	//	// ¹«ÇÑ·çÇÁ
+	//	// ë¬´í•œë£¨í”„
 	//}
 
 	int x = 0;
-	for (int x = 0; x < 10; ++x) // i´Â for¹® ¾È¿¡¼­¸¸ À¯È¿
+	for (int x = 0; x < 10; ++x) // iëŠ” forë¬¸ ì•ˆì—ì„œë§Œ ìœ íš¨
 	{
 
-		if (x % 2 == 1) // i°¡ È¦¼öÀÏ °æ¿ì
+		if (x % 2 == 1) // iê°€ í™€ìˆ˜ì¼ ê²½ìš°
 		{
-			continue; // ¾Æ·¡ ÄÚµå¸¦ ½ÇÇàÇÏÁö ¾Ê°í, ¹Ýº¹¹®ÀÇ Á¶°Ç Ã¼Å©·Î ÀÌµ¿
+			continue; // ì•„ëž˜ ì½”ë“œë¥¼ ì‹¤í–‰í•˜ì§€ ì•Šê³ , ë°˜ë³µë¬¸ì˜ ì¡°ê±´ ì²´í¬ë¡œ ì´ë™
 		}
 
 		printf("Output test\n");
 
-		//continue: ¾Æ·¡ ÄÚµå¸¦ ½ÇÇàÇÏÁö ¾Ê°í, ¹Ýº¹¹®ÀÇ Á¶°Ç Ã¼Å©·Î ÀÌµ¿
-		//break: ¹Ýº¹¹® Å»Ãâ
+		//continue: ì•„ëž˜ ì½”ë“œë¥¼ ì‹¤í–‰í•˜ì§€ ì•Šê³ , ë°˜ë³µë¬¸ì˜ ì¡°ê±´ ì²´í¬ë¡œ ì´ë™
+		//break: ë°˜ë³µë¬¸ íƒˆì¶œ
 
 	}
 
 	int t = 0;
-	while (t < 2) /*Á¶°ÇÃ¼Å©*/
+	while (t < 2) /*ì¡°ê±´ì²´í¬*/
 	{
 		printf("Output test\n");
 
-		++t; // ¹Ýº¹ÀÚ º¯°æ
+		++t; // ë°˜ë³µìž ë³€ê²½
 
 		//continue;
 		//break;
@@ -317,24 +336,34 @@ int main()
 	}
 
 
-	// ÄÜ¼Ö ÀÔÃâ·Â (¸í·É ÇÁ·ÒÇÁÆ®, ÅÍ¹Ì³Î)
-	// printf ´Â Ãâ·Â ÇÔ¼ö
-	printf("abcdef %d \n", 10); // %d: Á¤¼öÇü Ä¡È¯ ÈÄ Ãâ·Â
-	printf("abcdef %f \n", 10.1234f); // %f: ½Ç¼öÇü Ä¡È¯ ÈÄ Ãâ·Â
+
+	// ì½˜ì†” ìž…ì¶œë ¥ (ëª…ë ¹ í”„ë¡¬í”„íŠ¸, í„°ë¯¸ë„)
+	// printf ëŠ” ì¶œë ¥ í•¨ìˆ˜
+	printf("abcdef %d \n", 10); // %d: ì •ìˆ˜í˜• ì¹˜í™˜ í›„ ì¶œë ¥
+	printf("abcdef %f \n", 10.1234f); // %f: ì‹¤ìˆ˜í˜• ì¹˜í™˜ í›„ ì¶œë ¥
 
 	for (int i = 0; i < 5; ++i)
 	{
 		printf("Output i : %d \n", i);
 	}
 
-	// scanf ´Â ÀÔ·Â ÇÔ¼ö 
+	// scanf ëŠ” ìž…ë ¥ í•¨ìˆ˜ 
 	int iInput = 0;
-	scanf_s("%d", &iInput); // %d: Á¤¼öÇü ÀÔ·Â, ÄÜ¼ÖÃ¢¿¡ 100À» ÀÔ·ÂÇÏ¸é iInput¿¡ 100ÀÌ ÀúÀåµÊ
+	// %d: ì •ìˆ˜í˜• ìž…ë ¥, ì½˜ì†”ì°½ì— 100ì„ ìž…ë ¥í•˜ë©´ iInputì— 100ì´ ì €ìž¥ë¨
+	//scanf_s("%d", &iInput); 
 
 
-	// ÇÔ¼ö
-	// ÇÁ·Î±×·¥ÀÇ Á¾·á´Â main ÇÔ¼öÀÇ Á¾·á
-	// ½ºÅÃ ¸Þ¸ð¸® ¿µ¿ª: ÇÔ¼ö°¡ »ç¿ëÇÏ´Â ¸Þ¸ð¸® ¿µ¿ª
+
+	// í•¨ìˆ˜
+	// í”„ë¡œê·¸ëž¨ì˜ ì¢…ë£ŒëŠ” main í•¨ìˆ˜ì˜ ì¢…ë£Œ
+	// ìŠ¤íƒ ë©”ëª¨ë¦¬ ì˜ì—­: í•¨ìˆ˜ê°€ ì‚¬ìš©í•˜ëŠ” ë©”ëª¨ë¦¬ ì˜ì—­
+
+	// Factorial
+	// 8! = 8 x 7 x 6 x 5 x 4 x 3 x 2 x 1
+	int iValue = Factorial(4);
+	printf("Factorial(4) = %d\n", iValue);
+	iValue = Factorial(3);
+	printf("Factorial(3) = %d\n", iValue);
 
 
 
@@ -342,15 +371,3 @@ int main()
 	return 0;
 
 }
-
-// ´ÜÃàÅ°
-// Ctrl + k + c : ÁÖ¼®Ã³¸®
-// Ctrl + k + u : ÁÖ¼®ÇØÁ¦
-// Alt Drag : ¿øÇÏ´Â ¿µ¿ª¸¸ ¼±ÅÃ
-
-// µð¹ö±ë ´ÜÃàÅ°
-// F5 : µð¹ö±ë ½ÃÀÛ (µð¹ö±ë: ¹ö±×¸¦ Ã£¾Æ³»°í ¼öÁ¤ÇÏ´Â °úÁ¤), ´ÙÀ½ Áß´ÜÁ¡±îÁö ½ÇÇà
-// F9 : Áß´ÜÁ¡ Åä±Û (Åä±Û: »ý¼º ¹× ÇØÁ¦)
-// F10 : µð¹ö±ë Áß, ±¸¹® ÇÑ ÁÙ¾¿ ½ÇÇà (Step Over)
-// F11 : µð¹ö±ë Áß, ÇÔ¼ö ¾ÈÀ¸·Î ÁøÀÔ (Step Into), ´õ ¼¼ºÎÀûÀ¸·Î ½ÇÇà
-// Shift + F5 : µð¹ö±ë Á¾·á
