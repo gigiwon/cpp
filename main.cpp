@@ -1,5 +1,4 @@
-#include <stdio.h>
-
+ #include <stdio.h>
 
 // # 은 전처리 기능인데, 이건 무조건 먼저 실행
 // #define 은 치환 -> 매크로 정의
@@ -32,6 +31,8 @@ int Add(int left, int right) // left, right 는 지역변수
 
 
 
+// 함수
+// Factorial
 int Factorial(int _iNum)
 {
 	int iValue = 1;
@@ -43,6 +44,8 @@ int Factorial(int _iNum)
 
 	return iValue;
 }
+
+// 재귀함수: 자기 자신을 호출하는 함수
 
 
 
@@ -358,13 +361,8 @@ int main()
 	// 프로그램의 종료는 main 함수의 종료
 	// 스택 메모리 영역: 함수가 사용하는 메모리 영역
 
-	// Factorial
-	// 8! = 8 x 7 x 6 x 5 x 4 x 3 x 2 x 1
-	int iValue = Factorial(4);
-	printf("Factorial(4) = %d\n", iValue);
-	iValue = Factorial(3);
-	printf("Factorial(3) = %d\n", iValue);
-
+	int iValue = Factorial(5);
+	iValue = Factorial(6);
 
 
 
