@@ -1,80 +1,40 @@
-# include <stdio.h>
+#include <stdio.h>
 
-// 함수
-// Factorial
-int Factorial(int _iNum)
+
+
+// 구조체: 사용자 정의 자료형 (User Defined Data Type)
+typedef struct _tagMyST
 {
-	int iValue = 1;
+	int		a; // int 파트의 이름 (변수의 선언이 아님)
+	float	f;
+} MYST;
 
-	for (int j = 0; j < _iNum - 1; ++j)
-	{
-		iValue *= (j + 2);
-	}
-
-	//Factorial(3); -> // 함수가 쌓이기만 하고 종료되지 않는다
-
-	return iValue;
-}
-
-// 재귀함수: 자기 자신을 호출하는 함수
-// 가독성, 구현의	용이성
-// 단점: 속도가 느리다, 메모리 사용량 증가
-
-// 재귀함수 팩토리얼
-int Factorial_Re(int _iNum)
+// 구조체도 모듈화 가능
+// c++에서는 typedef 생략 가능 (c언어 호환성 위해 사용)
+typedef struct _tagBig
 {
-	if (_iNum == 1)
-	{
-		return 1;
-	}
-	return _iNum * Factorial_Re(_iNum - 1);
+	MYST	k; 
+	int		c;
+	char	d;
+} BIG;
 
+typedef int INT; // 기본 자료형도	별칭 가능
 
-}
-
-// 피보나치 수열
-// 1, 1, 2, 3, 5, 8, 13, 21, 34, ...
-int Fibonacci(int _iNum)
-{
-	if (_iNum == 1 || _iNum == 2)
-	{
-		return 1;
-	}
-
-	int iPrev1 = 1;
-	int iPrev2 = 1;
-	int iValue = 0;
-
-	for (int i = 0; i < _iNum - 2; ++i)
-	{
-		iValue = iPrev1 + iPrev2;
-		iPrev1 = iPrev2;
-		iPrev2 = iValue;
-	}
-
-	return iValue;
-}
-
-// 꼬리재귀로 하면 더 잘 해결
-int Fibonacci_Re(int _iNum)
-{
-	if (_iNum == 1 || _iNum == 2)
-	{
-		return 1;
-	}
-
-	return Fibonacci_Re(_iNum - 1) + Fibonacci_Re(_iNum - 2);
-}
 
 
 int main()
-{
-	int iValue = Factorial(5);
-	iValue = Factorial(6);
-	iValue = Factorial_Re(10);
+{	
+	int arr[10] = { 1,2,3,4,5,6 }; // 배열 초기화, 미입력은 0으로 초기화
 
-	iValue = Fibonacci(7);
-	iValue = Fibonacci_Re(7);
+
+	// 구조체
+	MYST t = { 100, 3.14f }; // 구조체도 초기화 가능
+	t.a = 10;
+	t.f = 10.2312f;
+
+	int iSize = sizeof(MYST);
+
+
 
 	return 0;
 }
