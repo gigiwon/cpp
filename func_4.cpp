@@ -3,8 +3,8 @@
 
 #include <stdio.h>
 
-//int g_i = 0; // main.cpp¿¡¼­ ¼±¾ğµÇ¾ú±â ¶§¹®¿¡ ¸µÅ© ¿¡·¯ ¹ß»ı
-//static int g_iStatic = 0; // staticÀÌ ºÙ¾îÀÖ±â ¶§¹®¿¡ ¸µÅ© ¿¡·¯ ¹ß»ı ¾ÈÇÔ
+//int g_i = 0; // main.cppì—ì„œ ì„ ì–¸ë˜ì—ˆê¸° ë•Œë¬¸ì— ë§í¬ ì—ëŸ¬ ë°œìƒ
+//static int g_iStatic = 0; // staticì´ ë¶™ì–´ìˆê¸° ë•Œë¬¸ì— ë§í¬ ì—ëŸ¬ ë°œìƒ ì•ˆí•¨
 
 
 int Add (int a, int b)
