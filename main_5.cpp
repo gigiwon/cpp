@@ -24,6 +24,8 @@ int g_i = 0; // Date 영역
 #include "common.h"
 
 
+void Test(); // 미리 함수 선언하고 나중에 컴파일 단계에서 호출
+
 
 // 정적변수
 //static int g_iStatic = 0; // Data 영역
@@ -86,3 +88,10 @@ int main()
 	return 0;
 }
 
+
+void Test() // void: 반환 해주는게 없는 함수
+{
+	// 전역변수는 되지만 지역변수는 안됨
+	++g_i;
+
+}
