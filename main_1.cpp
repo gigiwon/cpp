@@ -1,5 +1,6 @@
  #include <stdio.h>
 
+
 // # 은 전처리 기능인데, 이건 무조건 먼저 실행
 // #define 은 치환 -> 매크로 정의
 // #define 장점
@@ -15,10 +16,8 @@
 #define POISON   0x020 // 여섯번째 상태
 
 
-
 // 주석
 // 설명, 코드로 인식되지 않는다
-
 
 
 // 전역변수
@@ -28,7 +27,6 @@ int Add(int left, int right) // left, right 는 지역변수
 {
 	return left + right;
 }
-
 
 
 // 함수
@@ -48,9 +46,8 @@ int Factorial(int _iNum)
 // 재귀함수: 자기 자신을 호출하는 함수
 
 
-
 // 함수
-int main_1()
+int main()
 {
 	// 자료형: 정수형, 실수형 (크기 단위, byte) 
 	// 정수형: char(1), short(2), int(4), long(4), long long(8)
@@ -82,7 +79,6 @@ int main_1()
 	float f = 10.2415f + (float)20;
 
 	// 실수를 상수로 적을 경우 소수점 뒤에 f를 붙이면 float 자료형으로, f를 붙이지 않으면 double 자료형으로 인식
-
 
 
 	// 연산자
@@ -145,7 +141,6 @@ int main_1()
 	// 비교 연산자
 	// ==, !=, >, <, >=, <=
 	// 참, 거짓
-
 
 
 	// if, else 구문
@@ -217,7 +212,6 @@ int main_1()
 	}
 
 
-
 	// 삼항 연산자
 	// 가독성이 떨어져서 굳이 사용하지는 않음
 	// :?
@@ -232,7 +226,6 @@ int main_1()
 	{
 		iTest = 200;
 	}
-
 
 
 	// 비트 연산자
@@ -264,7 +257,6 @@ int main_1()
 
 	// 특정자리 비트 제거
 	iStatus &= ~THIRSTY; // THIRSTY 자리만 0으로 변경, 나머지 자리는 그대로
-
 
 
 	// 변수
@@ -303,7 +295,6 @@ int main_1()
 	int iData = Add(100, 200);
 
 
-
 	// 반복문, 조건을 주고 조건이 끝날 때까지 반복
 	//for (/*반복자 초기화*/; /*반복자 조건 체크, true/false가 나와야 됨*/; /*반복자 변경*/)
 	//{
@@ -339,7 +330,6 @@ int main_1()
 	}
 
 
-
 	// 콘솔 입출력 (명령 프롬프트, 터미널)
 	// printf 는 출력 함수
 	printf("abcdef %d \n", 10); // %d: 정수형 치환 후 출력
@@ -356,14 +346,12 @@ int main_1()
 	//scanf_s("%d", &iInput); 
 
 
-
 	// 함수
 	// 프로그램의 종료는 main 함수의 종료
 	// 스택 메모리 영역: 함수가 사용하는 메모리 영역
 
 	int iValue = Factorial(5);
 	iValue = Factorial(6);
-
 
 
 	return 0;
