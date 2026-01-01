@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+
 // 변수종류
 // 1. 지역변수 (Local Variable)		: 함수 내부에 선언된 변수
 // 2. 전역변수 (Global Variable)		: 함수 외부에 선언된 변수
@@ -43,7 +44,6 @@ int Test()
 }
 
 
-
 int main()
 {
 	//int i = Mul(10, 20);
@@ -65,7 +65,6 @@ int main()
 	printf("Test 함수 호출 횟수 : %d\n", iCall);
 
 
-
 	// 포인터 변수: 주소를 저장하는 변수
 	// 자료형 + * 변수명
 	// 자료형: 해당 포인터에게 전달된 주소를 해석하는 단위
@@ -83,8 +82,6 @@ int main()
 	// 주소의 단위, byte(= 8 bits)
 
 
-
-
 	return 0;
 }
 
@@ -95,3 +92,4 @@ void Test() // void: 반환 해주는게 없는 함수
 	++g_i;
 
 }
+
